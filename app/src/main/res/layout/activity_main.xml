@@ -10,7 +10,8 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"/>
+            android:hint="Name"
+            android:inputType="textPersonName" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/city"
@@ -18,7 +19,8 @@
             android:layout_height="wrap_content"
             android:hint="city"
             android:layout_below="@id/name"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="textPersonName"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ten"
@@ -26,7 +28,9 @@
             android:layout_height="wrap_content"
             android:hint="10th"
             android:layout_below="@id/city"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="numberDecimal"
+            android:maxLength="3"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/hsc"
@@ -34,7 +38,9 @@
             android:layout_height="wrap_content"
             android:hint="12th"
             android:layout_below="@id/ten"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="numberDecimal"
+            android:maxLength="3"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/grad"
@@ -42,7 +48,9 @@
             android:layout_height="wrap_content"
             android:hint="Grad"
             android:layout_below="@id/hsc"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="numberDecimal"
+            android:maxLength="3"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dled"
@@ -50,23 +58,20 @@
             android:layout_height="wrap_content"
             android:hint="PG"
             android:layout_below="@id/grad"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:inputType="numberDecimal"
+            android:maxLength="3"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pre"
-            android:layout_below="@id/dled"
-            android:layout_marginTop="10dp"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mains"
-            android:layout_below="@id/pre"
-            android:layout_marginTop="10dp"/>
+            android:layout_below="@id/dled"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:maxLength="3"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/submit"
@@ -85,6 +90,14 @@
             android:layout_marginTop="20dp"
             android:text="Retrive"
             android:layout_centerHorizontal="true"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
 
 
 
