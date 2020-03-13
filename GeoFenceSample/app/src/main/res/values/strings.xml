@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GeoFenceSample</string>
+    <string name="channel_name">psNotification</string>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ap.android.navigationapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_sendMoneyFragment"
+            app:destination="@id/sendMoneyFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+        <argument
+            android:name="trans"
+            app:argType="com.ap.android.navigationapp.Transaction" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.ap.android.navigationapp.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.ap.android.navigationapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/sendMoneyFragment"
+        android:name="com.ap.android.navigationapp.ui.sendmoney.SendMoneyFragment"
+        android:label="Send Money"
+        tools:layout="@layout/fragment_send_money" >
+        <action
+            android:id="@+id/action_sendMoneyFragment_to_confirmFragment"
+            app:destination="@id/confirmFragment" />
+        <argument
+            android:name="rupee"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.ap.android.navigationapp.ui.transaction.TransactionFragment"
+        android:label="Transaction"
+        tools:layout="@layout/fragment_transaction" >
+        <argument
+            android:name="trans"
+            app:argType="com.ap.android.navigationapp.Transaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="com.ap.android.navigationapp.ui.balance.BalanceFragment"
+        android:label="Balance"
+        tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/confirmFragment"
+        android:name="com.ap.android.navigationapp.ui.confirmation.ConfirmFragment"
+        android:label="Confirm"
+        tools:layout="@layout/fragment_confirm" >
+        <argument
+            android:name="rupee"
+            app:argType="string" />
+    </fragment>
+</navigation>

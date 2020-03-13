@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="city"
+            android:layout_below="@id/name"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="10th"
+            android:layout_below="@id/city"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/hsc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="12th"
+            android:layout_below="@id/ten"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/grad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Grad"
+            android:layout_below="@id/hsc"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PG"
+            android:layout_below="@id/grad"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pre"
+            android:layout_below="@id/dled"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mains"
+            android:layout_below="@id/pre"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main"
+            android:layout_marginTop="20dp"
+            android:text="Submit"
+            android:layout_centerHorizontal="true"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/submit"
+            android:layout_marginTop="20dp"
+            android:text="Retrive"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+    </RelativeLayout>
+</layout>

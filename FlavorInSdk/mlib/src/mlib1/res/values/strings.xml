@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mlib</string>
+    <string name="lib_text_msg">This is from Mlib1</string>
+</resources>
