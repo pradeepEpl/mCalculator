@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -48,26 +49,134 @@ public class MainActivity extends AppCompatActivity {
                 retrive();
             }
         });
+        mainBinding.find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                find();
+            }
+        });
+        retrive();
+    }
+
+    private void find() {
+        mainBinding.progressbar.setVisibility(View.VISIBLE);
+        String name = mainBinding.searchName.getText().toString();
+        String id = Preference.getPreference(this).getUser(name);
+        if (id == null) {
+            Snackbar.make(mainBinding.getRoot(), "Not Registered", Snackbar.LENGTH_SHORT).show();
+            mainBinding.progressbar.setVisibility(View.GONE);
+            return;
+        }
+        DocumentReference docRef = firebaseFirestore.collection("merit").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        final String name = (String) document.get("Name");
+                        final String city = (String) document.get("City");
+                        final Double merit = (Double) document.get("Merit");
+                        firebaseFirestore.collection("merit")
+                                .orderBy("Merit", Query.Direction.DESCENDING)
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        int i = 1;
+                                        if (task.isSuccessful()) {
+                                            for (QueryDocumentSnapshot snapshot : task.getResult()) {
+                                                Log.d(TAG, snapshot.getId() + " => " + snapshot.getData());
+                                                final String sName = (String) snapshot.get("Name");
+                                                final String sCity = (String) snapshot.get("City");
+                                                final Double sMerit = (Double) snapshot.get("Merit");
+                                                if (sName.equals(name) && sCity.equals(city) && sMerit.equals(merit)) {
+                                                    Log.d(TAG, "Rank " + i);
+                                                    String fMerit = String.format("%.1f", sMerit);
+                                                    mainBinding.rank.setText(sName + " " + sCity + " " + fMerit + "\n"+ " Rank : " + i );
+                                                }
+                                                i++;
+                                            }
+                                            Log.d(TAG, " Total Records " + i);
+                                        } else {
+                                            Log.d(TAG, "Error getting documents: ", task.getException());
+                                        }
+                                        mainBinding.progressbar.setVisibility(View.GONE);
+                                    }
+                                });
+
+                    } else {
+                        Log.d(TAG, "No such document");
+                        mainBinding.progressbar.setVisibility(View.GONE);
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                    mainBinding.progressbar.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     private void retrive() {
-        DocumentReference docRef = firebaseFirestore.collection("merit").document("Main");
-        firebaseFirestore.collection("merit")
-                //.whereEqualTo("Main", "106")
-                .orderBy("Merit", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
+        mainBinding.progressbar.setVisibility(View.VISIBLE);
+        Preference preference = Preference.getPreference(this);
+        String id = preference.getUser("ID");
+        if (id == null) {
+            Snackbar.make(mainBinding.getRoot(), "Not Registered", Snackbar.LENGTH_SHORT).show();
+            mainBinding.progressbar.setVisibility(View.GONE);
+            return;
+        }
+        DocumentReference docRef = firebaseFirestore.collection("merit").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        final String name = (String) document.get("Name");
+                        final String city = (String) document.get("City");
+                        final Double merit = (Double) document.get("Merit");
+                        firebaseFirestore.collection("merit")
+                                .orderBy("Merit", Query.Direction.DESCENDING)
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        int i = 1;
+                                        if (task.isSuccessful()) {
+                                            for (QueryDocumentSnapshot snapshot : task.getResult()) {
+                                                Log.d(TAG, snapshot.getId() + " => " + snapshot.getData());
+                                                final String sName = (String) snapshot.get("Name");
+                                                final String sCity = (String) snapshot.get("City");
+                                                final Double sMerit = (Double) snapshot.get("Merit");
+                                                if (sName.equals(name) && sCity.equals(city) && sMerit.equals(merit)) {
+                                                    Log.d(TAG, "Rank " + i);
+                                                    String fMerit = String.format("%.1f", sMerit);
+                                                    mainBinding.rank.setText(sName + " " + sCity + " " + fMerit + "\n"+ " Rank : " + i );
+                                                }
+                                                i++;
+                                            }
+                                            Log.d(TAG, " Total Records " + i);
+
+                                        } else {
+                                            Log.d(TAG, "Error getting documents: ", task.getException());
+                                        }
+                                        mainBinding.progressbar.setVisibility(View.GONE);
+                                    }
+                                });
+
+                    } else {
+                        Log.d(TAG, "No such document");
+                        mainBinding.progressbar.setVisibility(View.GONE);
                     }
-                });
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                    mainBinding.progressbar.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     private void save() {
@@ -86,6 +195,12 @@ public class MainActivity extends AppCompatActivity {
                         public void onSuccess(DocumentReference documentReference) {
                             mainBinding.progressbar.setVisibility(View.GONE);
                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Preference preference = Preference.getPreference(MainActivity.this);
+                            preference.saveUser("ID", documentReference.getId());
+                            preference.saveUser(mainBinding.name.getText().toString(), documentReference.getId());
+                            preference.saveUser("Name", mainBinding.name.getText().toString());
+                            preference.saveUser("City", mainBinding.city.getText().toString());
+                            preference.saveUser("Merit", mainBinding.main.getText().toString());
                             Snackbar.make(mainBinding.getRoot(), "Successfully Submit", Snackbar.LENGTH_SHORT).show();
                         }
                     }).

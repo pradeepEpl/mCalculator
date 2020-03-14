@@ -1,106 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="textPersonName" />
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="city"
-            android:layout_below="@id/name"
-            android:layout_marginTop="10dp"
-            android:inputType="textPersonName"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:inputType="textPersonName" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ten"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="10th"
-            android:layout_below="@id/city"
-            android:layout_marginTop="10dp"
-            android:inputType="numberDecimal"
-            android:maxLength="3"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="city"
+                android:layout_below="@id/name"
+                android:layout_marginTop="10dp"
+                android:inputType="textPersonName"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/hsc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="12th"
-            android:layout_below="@id/ten"
-            android:layout_marginTop="10dp"
-            android:inputType="numberDecimal"
-            android:maxLength="3"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="10th percentage"
+                android:layout_below="@id/city"
+                android:layout_marginTop="10dp"
+                android:inputType="numberDecimal"
+                android:maxLength="4"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/grad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Grad"
-            android:layout_below="@id/hsc"
-            android:layout_marginTop="10dp"
-            android:inputType="numberDecimal"
-            android:maxLength="3"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hsc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="12th percentage"
+                android:layout_below="@id/ten"
+                android:layout_marginTop="10dp"
+                android:inputType="numberDecimal"
+                android:maxLength="4"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dled"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="PG"
-            android:layout_below="@id/grad"
-            android:layout_marginTop="10dp"
-            android:inputType="numberDecimal"
-            android:maxLength="3"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/grad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Graduation percentage"
+                android:layout_below="@id/hsc"
+                android:layout_marginTop="10dp"
+                android:inputType="numberDecimal"
+                android:maxLength="4"/>
 
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mains"
-            android:layout_below="@id/dled"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:maxLength="3"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main"
-            android:layout_marginTop="20dp"
-            android:text="Submit"
-            android:layout_centerHorizontal="true"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/submit"
-            android:layout_marginTop="20dp"
-            android:text="Retrive"
-            android:layout_centerHorizontal="true"/>
-
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="BTC/B.Ed/Special Edu/Other percentage"
+                android:layout_below="@id/grad"
+                android:layout_marginTop="10dp"
+                android:inputType="numberDecimal"
+                android:maxLength="4"/>
 
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mains"
+                android:layout_below="@id/dled"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:maxLength="3"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main"
+                android:layout_marginTop="20dp"
+                android:text="Submit"
+                android:layout_centerHorizontal="true"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/get"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/submit"
+                android:layout_marginTop="20dp"
+                android:text="Check Rank"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/get"
+                android:layout_marginTop="20dp"
+                android:textSize="8pt"
+                android:textColor="@android:color/holo_red_light"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Write name same as while registering"
+                android:inputType="textPersonName"
+                android:layout_below="@id/rank"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_name"
+                android:layout_marginTop="20dp"
+                android:text="Find"
+                android:layout_centerHorizontal="true"/>
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 
-    </RelativeLayout>
 </layout>
