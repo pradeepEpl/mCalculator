@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                                                 i++;
                                             }
                                             Log.d(TAG, " Total Records " + i);
-
+                                            Snackbar.make(mainBinding.getRoot(), "Total " + i, Snackbar.LENGTH_SHORT).show();
                                         } else {
                                             Log.d(TAG, "Error getting documents: ", task.getException());
                                         }
